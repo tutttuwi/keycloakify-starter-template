@@ -7,6 +7,15 @@ export type KcContextExtension = {
     properties: Record<KcEnvName, string> & {};
     // NOTE: Here you can declare more properties to extend the KcContext
     // See: https://docs.keycloakify.dev/faq-and-help/some-values-you-need-are-missing-from-in-kccontext
+    message?: {
+        type: "success" | "warning" | "error" | "info";
+        summary: string;
+        params?: string[];
+    };
+    error?: {
+        message: string;
+        type?: string;
+    };
 };
 
 export type KcContextExtensionPerPage = {};

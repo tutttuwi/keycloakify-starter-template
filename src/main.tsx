@@ -15,6 +15,24 @@ if (import.meta.env.DEV) {
 }
 */
 
+// 開発環境でメッセージテスト用のコード
+if (import.meta.env.DEV) {
+    // URLパラメータでメッセージをテスト
+    const urlParams = new URLSearchParams(window.location.search);
+    const testMessage = urlParams.get("test_message");
+
+    if (testMessage) {
+        // セッションストレージにテストメッセージを保存
+        sessionStorage.setItem(
+            "keycloak_message",
+            JSON.stringify({
+                type: "success",
+                summary: testMessage
+            })
+        );
+    }
+}
+
 createRoot(document.getElementById("root")!).render(
     <StrictMode>
         {!window.kcContext ? (

@@ -3,6 +3,8 @@ import type { PageProps } from "keycloakify/login/pages/PageProps";
 import { getKcClsx, type KcClsx } from "keycloakify/login/lib/kcClsx";
 import type { KcContext } from "../KcContext";
 import type { I18n } from "../i18n";
+import MessageDisplay from "../components/MessageDisplay";
+import { useKeycloakMessage } from "../hooks/useKeycloakMessage";
 
 export default function ResetCredentials(props: PageProps<Extract<KcContext, { pageId: "login-reset-password.ftl" }>, I18n>) {
     const { kcContext, i18n, doUseDefaultCss, Template, classes } = props;
@@ -12,7 +14,7 @@ export default function ResetCredentials(props: PageProps<Extract<KcContext, { p
         classes
     });
 
-    const { url, messagesPerField } = kcContext;
+    const { url, messagesPerField, message: kcMessage, error: kcError } = kcContext;
 
     const { msg } = i18n;
 
@@ -23,22 +25,23 @@ export default function ResetCredentials(props: PageProps<Extract<KcContext, { p
 
     const [isSubmitButtonDisabled, setIsSubmitButtonDisabled] = useState(false);
 
+    // Keycloakメッセージを取得
+    const { message: urlMessage, error: urlError } = useKeycloakMessage();
+
+    // 優先順位: kcContext > URLパラメータ
+    const displayMessage = kcMessage || urlMessage;
+    const displayError = kcError || urlError;
+
     return (
         <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-indigo-100 py-12 px-4 sm:px-6 lg:px-8">
             <div className="max-w-md w-full space-y-8">
                 <div className="text-center">
-                    <h2 className="mt-6 text-3xl font-bold text-gray-900 font-geist">パスワードを忘れた場合</h2>
-                    <p className="mt-2 text-sm text-gray-600">パスワードリセットのための情報を入力してください</p>
+                    <h2 className="mt-6 text-3xl font-bold text-gray-900 font-geist">パスワードリセット</h2>
+                    <p className="mt-2 text-sm text-gray-600">パスワードリセット用のメールを送信します</p>
                 </div>
 
-                <div className="text-center">
-                    <span className="text-sm text-gray-600">
-                        アカウントをお持ちですか？{" "}
-                        <a tabIndex={8} href={url.loginUrl} className="font-medium text-indigo-600 hover:text-indigo-500 transition-colors">
-                            ログインに戻る
-                        </a>
-                    </span>
-                </div>
+                {/* Keycloakメッセージ表示 */}
+                <MessageDisplay message={displayMessage} error={displayError} />
 
                 <div className="bg-white py-8 px-6 shadow-xl rounded-xl border border-gray-100">
                     <form
