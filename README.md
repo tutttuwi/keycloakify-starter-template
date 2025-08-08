@@ -56,3 +56,14 @@ To release a new version **just update the `package.json` version and push**.
 
 To enable the workflow go to your fork of this repository on GitHub then navigate to:
 `Settings` > `Actions` > `Workflow permissions`, select `Read and write permissions`.
+
+## Command
+
+```zsh
+# 開発サーバ起動
+yarn dev
+# テーマビルド
+yarn build-keycloak-theme
+# KeyCloak立ち上げ
+npx keycloakify start-keycloak --keycloak-version 26
+```
