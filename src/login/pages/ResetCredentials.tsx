@@ -14,7 +14,12 @@ export default function ResetCredentials(props: PageProps<Extract<KcContext, { p
 
     const { url, messagesPerField } = kcContext;
 
-    const { msg, msgStr } = i18n;
+    const { msg } = i18n;
+
+    // 生年月日の入力制限用の状態
+    const [birthYear, setBirthYear] = useState("");
+    const [birthMonth, setBirthMonth] = useState("");
+    const [birthDay, setBirthDay] = useState("");
 
     const [isSubmitButtonDisabled, setIsSubmitButtonDisabled] = useState(false);
 
@@ -29,11 +34,7 @@ export default function ResetCredentials(props: PageProps<Extract<KcContext, { p
                 <div className="text-center">
                     <span className="text-sm text-gray-600">
                         アカウントをお持ちですか？{" "}
-                        <a
-                            tabIndex={4}
-                            href={url.loginUrl}
-                            className="font-medium text-indigo-600 hover:text-indigo-500 transition-colors"
-                        >
+                        <a tabIndex={8} href={url.loginUrl} className="font-medium text-indigo-600 hover:text-indigo-500 transition-colors">
                             ログインに戻る
                         </a>
                     </span>
@@ -73,8 +74,148 @@ export default function ResetCredentials(props: PageProps<Extract<KcContext, { p
                         </div>
 
                         <div>
-                            <button
+                            <label htmlFor="firstNameKana" className="block text-sm font-medium text-gray-700 mb-2">
+                                性（カナ）
+                            </label>
+                            <input
                                 tabIndex={2}
+                                id="firstNameKana"
+                                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors"
+                                name="firstNameKana"
+                                type="text"
+                                autoComplete="given-name"
+                                maxLength={20}
+                                pattern="[ァ-ヶー]*"
+                                placeholder="ヤマダ"
+                                onKeyPress={e => {
+                                    const char = String.fromCharCode(e.charCode);
+                                    if (!/^[ァ-ヶー]$/.test(char)) {
+                                        e.preventDefault();
+                                    }
+                                }}
+                            />
+                        </div>
+
+                        <div>
+                            <label htmlFor="lastNameKana" className="block text-sm font-medium text-gray-700 mb-2">
+                                名（カナ）
+                            </label>
+                            <input
+                                tabIndex={3}
+                                id="lastNameKana"
+                                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors"
+                                name="lastNameKana"
+                                type="text"
+                                autoComplete="family-name"
+                                maxLength={20}
+                                pattern="[ァ-ヶー]*"
+                                placeholder="タロウ"
+                                onKeyPress={e => {
+                                    const char = String.fromCharCode(e.charCode);
+                                    if (!/^[ァ-ヶー]$/.test(char)) {
+                                        e.preventDefault();
+                                    }
+                                }}
+                            />
+                        </div>
+
+                        <div>
+                            <label htmlFor="birthYear" className="block text-sm font-medium text-gray-700 mb-2">
+                                生年月日
+                            </label>
+                            <div className="flex space-x-2">
+                                <div className="flex-1">
+                                    <input
+                                        tabIndex={4}
+                                        id="birthYear"
+                                        className="w-full px-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors text-center"
+                                        name="birthYear"
+                                        type="text"
+                                        maxLength={4}
+                                        placeholder="1990"
+                                        value={birthYear}
+                                        onChange={e => {
+                                            const value = e.target.value.replace(/[^0-9]/g, "");
+                                            const numValue = parseInt(value);
+                                            if (value.length <= 4 && numValue >= 1900 && numValue <= new Date().getFullYear()) {
+                                                setBirthYear(value);
+                                            }
+                                        }}
+                                        onKeyDown={e => {
+                                            if (
+                                                !/[0-9]/.test(e.key) &&
+                                                !["Backspace", "Delete", "ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown", "Tab"].includes(e.key)
+                                            ) {
+                                                e.preventDefault();
+                                            }
+                                        }}
+                                    />
+                                    <div className="text-xs text-gray-500 text-center mt-1">年</div>
+                                </div>
+                                <div className="flex items-center text-gray-500 text-lg font-medium">/</div>
+                                <div className="w-20">
+                                    <input
+                                        tabIndex={5}
+                                        id="birthMonth"
+                                        className="w-full px-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors text-center"
+                                        name="birthMonth"
+                                        type="text"
+                                        maxLength={2}
+                                        placeholder="01"
+                                        value={birthMonth}
+                                        onChange={e => {
+                                            const value = e.target.value.replace(/[^0-9]/g, "");
+                                            const numValue = parseInt(value);
+                                            if (value.length <= 2 && numValue >= 1 && numValue <= 12) {
+                                                setBirthMonth(value);
+                                            }
+                                        }}
+                                        onKeyDown={e => {
+                                            if (
+                                                !/[0-9]/.test(e.key) &&
+                                                !["Backspace", "Delete", "ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown", "Tab"].includes(e.key)
+                                            ) {
+                                                e.preventDefault();
+                                            }
+                                        }}
+                                    />
+                                    <div className="text-xs text-gray-500 text-center mt-1">月</div>
+                                </div>
+                                <div className="flex items-center text-gray-500 text-lg font-medium">/</div>
+                                <div className="w-20">
+                                    <input
+                                        tabIndex={6}
+                                        id="birthDay"
+                                        className="w-full px-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors text-center"
+                                        name="birthDay"
+                                        type="text"
+                                        maxLength={2}
+                                        placeholder="01"
+                                        value={birthDay}
+                                        onChange={e => {
+                                            const value = e.target.value.replace(/[^0-9]/g, "");
+                                            const numValue = parseInt(value);
+                                            if (value.length <= 2 && numValue >= 1 && numValue <= 31) {
+                                                setBirthDay(value);
+                                            }
+                                        }}
+                                        onKeyDown={e => {
+                                            if (
+                                                !/[0-9]/.test(e.key) &&
+                                                !["Backspace", "Delete", "ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown", "Tab"].includes(e.key)
+                                            ) {
+                                                e.preventDefault();
+                                            }
+                                        }}
+                                    />
+                                    <div className="text-xs text-gray-500 text-center mt-1">日</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <button
+                                tabIndex={7}
                                 disabled={isSubmitButtonDisabled}
                                 className="w-full flex justify-center py-3 px-4 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
                                 name="login"
@@ -103,6 +244,13 @@ export default function ResetCredentials(props: PageProps<Extract<KcContext, { p
                                 )}
                             </button>
                         </div>
+
+                        {/* 生年月日を結合した隠しフィールド */}
+                        <input
+                            type="hidden"
+                            name="birthDateFormatted"
+                            value={`${birthYear}-${birthMonth.padStart(2, "0")}-${birthDay.padStart(2, "0")}`}
+                        />
                     </form>
                 </div>
             </div>
