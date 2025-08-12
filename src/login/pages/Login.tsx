@@ -49,7 +49,7 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: "log
                             <a
                                 tabIndex={8}
                                 href={url.registrationUrl}
-                                className="font-medium text-indigo-600 hover:text-indigo-500 transition-colors"
+                                className="font-medium text-primary-600 hover:text-primary-500 transition-colors"
                             >
                                 {msg("doRegister")}
                             </a>
