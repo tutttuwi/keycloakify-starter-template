@@ -61,7 +61,7 @@ export default function UpdatePassword(props: PageProps<Extract<KcContext, { pag
                                 <input
                                     tabIndex={1}
                                     id="password-new"
-                                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors"
+                                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors"
                                     name="password-new"
                                     type="password"
                                     autoFocus
@@ -85,7 +85,7 @@ export default function UpdatePassword(props: PageProps<Extract<KcContext, { pag
                                 <input
                                     tabIndex={2}
                                     id="password-confirm"
-                                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors"
+                                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors"
                                     name="password-confirm"
                                     type="password"
                                     autoComplete="new-password"
@@ -104,7 +104,7 @@ export default function UpdatePassword(props: PageProps<Extract<KcContext, { pag
                             <button
                                 tabIndex={3}
                                 disabled={isSubmitButtonDisabled}
-                                className="w-full flex justify-center py-3 px-4 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                                className="w-full flex justify-center py-3 px-4 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
                                 name="login"
                                 id="kc-login"
                                 type="submit"
