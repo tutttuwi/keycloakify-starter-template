@@ -1,5 +1,3 @@
-import React from "react";
-
 interface MessageDisplayProps {
     message?: {
         type: "success" | "warning" | "error" | "info";
@@ -17,7 +15,6 @@ export default function MessageDisplay({ message, error }: MessageDisplayProps) 
         return null;
     }
 
-    const displayMessage = message || error;
     const messageType = message?.type || (error ? "error" : "info");
     const messageText = message?.summary || error?.message || "";
 

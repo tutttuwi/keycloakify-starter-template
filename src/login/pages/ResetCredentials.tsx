@@ -1,22 +1,16 @@
 import { useState } from "react";
 import type { PageProps } from "keycloakify/login/pages/PageProps";
-import { getKcClsx, type KcClsx } from "keycloakify/login/lib/kcClsx";
 import type { KcContext } from "../KcContext";
 import type { I18n } from "../i18n";
 import MessageDisplay from "../components/MessageDisplay";
 import { useKeycloakMessage } from "../hooks/useKeycloakMessage";
 
 export default function ResetCredentials(props: PageProps<Extract<KcContext, { pageId: "login-reset-password.ftl" }>, I18n>) {
-    const { kcContext, i18n, doUseDefaultCss, Template, classes } = props;
-
-    const { kcClsx } = getKcClsx({
-        doUseDefaultCss,
-        classes
-    });
+    const { kcContext } = props;
 
     const { url, messagesPerField, message: kcMessage, error: kcError } = kcContext;
 
-    const { msg } = i18n;
+    // const { msg } = i18n;
 
     // 生年月日の入力制限用の状態
     const [birthYear, setBirthYear] = useState("");

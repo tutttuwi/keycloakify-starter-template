@@ -17,7 +17,7 @@ export default function UpdatePassword(props: PageProps<Extract<KcContext, { pag
 
     const { url, messagesPerField, message: kcMessage, error: kcError } = kcContext;
 
-    const { msgStr } = i18n;
+    // const { msgStr } = i18n;
 
     const [isSubmitButtonDisabled, setIsSubmitButtonDisabled] = useState(false);
 
@@ -139,7 +139,7 @@ export default function UpdatePassword(props: PageProps<Extract<KcContext, { pag
 }
 
 function PasswordWrapper(props: { kcClsx: KcClsx; i18n: I18n; passwordInputId: string; children: JSX.Element }) {
-    const { kcClsx, i18n, passwordInputId, children } = props;
+    const { i18n, passwordInputId, children } = props;
 
     const { msgStr } = i18n;
 

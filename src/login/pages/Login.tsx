@@ -1,6 +1,5 @@
 import { useState, useEffect, useReducer } from "react";
 import { assert } from "keycloakify/tools/assert";
-import { clsx } from "keycloakify/tools/clsx";
 import type { PageProps } from "keycloakify/login/pages/PageProps";
 import { getKcClsx, type KcClsx } from "keycloakify/login/lib/kcClsx";
 import type { KcContext } from "../KcContext";
@@ -9,14 +8,14 @@ import MessageDisplay from "../components/MessageDisplay";
 import { useKeycloakMessage } from "../hooks/useKeycloakMessage";
 
 export default function Login(props: PageProps<Extract<KcContext, { pageId: "login.ftl" }>, I18n>) {
-    const { kcContext, i18n, doUseDefaultCss, Template, classes } = props;
+    const { kcContext, i18n, doUseDefaultCss, classes } = props;
 
     const { kcClsx } = getKcClsx({
         doUseDefaultCss,
         classes
     });
 
-    const { social, realm, url, usernameHidden, login, auth, registrationDisabled, messagesPerField, message: kcMessage, error: kcError } = kcContext;
+    const { realm, url, usernameHidden, login, auth, registrationDisabled, messagesPerField, message: kcMessage, error: kcError } = kcContext;
 
     const { msg, msgStr } = i18n;
 
@@ -191,7 +190,7 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: "log
 }
 
 function PasswordWrapper(props: { kcClsx: KcClsx; i18n: I18n; passwordInputId: string; children: JSX.Element }) {
-    const { kcClsx, i18n, passwordInputId, children } = props;
+    const { i18n, passwordInputId, children } = props;
 
     const { msgStr } = i18n;
 

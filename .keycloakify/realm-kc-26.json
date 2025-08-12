@@ -489,7 +489,19 @@
             "profile.attributes.favourite_pet": ""
         },
         "ja": {
-            "profile.attributes.favourite_pet": ""
+            "profile.attributes.favourite_pet": "",
+            "loginAccountTitle": "アカウントにサインイン",
+            "username": "ユーザー名",
+            "usernameOrEmail": "ユーザー名またはメールアドレス",
+            "email": "メールアドレス",
+            "password": "パスワード",
+            "rememberMe": "ログイン情報を記憶する",
+            "doForgotPassword": "パスワードを忘れた場合",
+            "doLogIn": "サインイン",
+            "noAccount": "アカウントをお持ちでない場合",
+            "doRegister": "新規登録",
+            "showPassword": "パスワードを表示",
+            "hidePassword": "パスワードを非表示"
         },
         "fa": {
             "profile.attributes.favourite_pet": ""
@@ -1807,8 +1819,8 @@
         ]
     },
     "internationalizationEnabled": true,
-    "supportedLocales": ["en", "fr", "es"],
-    "defaultLocale": "en",
+    "supportedLocales": ["en", "fr", "es", "ja"],
+    "defaultLocale": "ja",
     "authenticationFlows": [
         {
             "id": "0e1abbbe-40e3-4754-9fe2-8a7d1f82354e",
