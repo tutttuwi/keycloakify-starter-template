@@ -58,7 +58,7 @@ export default function ResetCredentials(props: PageProps<Extract<KcContext, { p
                             <input
                                 tabIndex={1}
                                 id="username"
-                                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors"
+                                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors"
                                 name="username"
                                 type="text"
                                 autoFocus
@@ -80,7 +80,7 @@ export default function ResetCredentials(props: PageProps<Extract<KcContext, { p
                             <input
                                 tabIndex={2}
                                 id="firstNameKana"
-                                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors"
+                                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors"
                                 name="firstNameKana"
                                 type="text"
                                 autoComplete="given-name"
@@ -103,7 +103,7 @@ export default function ResetCredentials(props: PageProps<Extract<KcContext, { p
                             <input
                                 tabIndex={3}
                                 id="lastNameKana"
-                                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors"
+                                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors"
                                 name="lastNameKana"
                                 type="text"
                                 autoComplete="family-name"
@@ -128,7 +128,7 @@ export default function ResetCredentials(props: PageProps<Extract<KcContext, { p
                                     <input
                                         tabIndex={4}
                                         id="birthYear"
-                                        className="w-full px-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors text-center"
+                                        className="w-full px-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors text-center"
                                         name="birthYear"
                                         type="text"
                                         maxLength={4}
@@ -157,7 +157,7 @@ export default function ResetCredentials(props: PageProps<Extract<KcContext, { p
                                     <input
                                         tabIndex={5}
                                         id="birthMonth"
-                                        className="w-full px-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors text-center"
+                                        className="w-full px-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors text-center"
                                         name="birthMonth"
                                         type="text"
                                         maxLength={2}
@@ -186,7 +186,7 @@ export default function ResetCredentials(props: PageProps<Extract<KcContext, { p
                                     <input
                                         tabIndex={6}
                                         id="birthDay"
-                                        className="w-full px-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors text-center"
+                                        className="w-full px-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors text-center"
                                         name="birthDay"
                                         type="text"
                                         maxLength={2}
@@ -217,7 +217,7 @@ export default function ResetCredentials(props: PageProps<Extract<KcContext, { p
                             <button
                                 tabIndex={7}
                                 disabled={isSubmitButtonDisabled}
-                                className="w-full flex justify-center py-3 px-4 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                                className="w-full flex justify-center py-3 px-4 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
                                 name="login"
                                 id="kc-login"
                                 type="submit"
@@ -252,6 +252,19 @@ export default function ResetCredentials(props: PageProps<Extract<KcContext, { p
                             value={`${birthYear}-${birthMonth.padStart(2, "0")}-${birthDay.padStart(2, "0")}`}
                         />
                     </form>
+
+                    {/* ログイン画面に戻るボタン */}
+                    <div className="mt-6 text-center">
+                        <a
+                            href={url.loginUrl}
+                            className="inline-flex items-center px-4 py-2 border border-gray-300 rounded-lg text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 transition-colors"
+                        >
+                            <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                            </svg>
+                            ログイン画面に戻る
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>

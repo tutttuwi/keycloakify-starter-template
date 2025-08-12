@@ -490,18 +490,18 @@
         },
         "ja": {
             "profile.attributes.favourite_pet": "",
-            "loginAccountTitle": "アカウントにサインイン",
-            "username": "ユーザー名",
-            "usernameOrEmail": "ユーザー名またはメールアドレス",
-            "email": "メールアドレス",
-            "password": "パスワード",
-            "rememberMe": "ログイン情報を記憶する",
             "doForgotPassword": "パスワードを忘れた場合",
             "doLogIn": "サインイン",
-            "noAccount": "アカウントをお持ちでない場合",
             "doRegister": "新規登録",
+            "email": "メールアドレス",
+            "hidePassword": "パスワードを非表示",
+            "loginAccountTitle": "アカウントにサインイン",
+            "noAccount": "アカウントをお持ちでない場合",
+            "password": "パスワード",
+            "rememberMe": "ログイン情報を記憶する",
             "showPassword": "パスワードを表示",
-            "hidePassword": "パスワードを非表示"
+            "username": "ユーザー名",
+            "usernameOrEmail": "ユーザー名またはメールアドレス"
         },
         "fa": {
             "profile.attributes.favourite_pet": ""
@@ -1819,7 +1819,7 @@
         ]
     },
     "internationalizationEnabled": true,
-    "supportedLocales": ["en", "fr", "es", "ja"],
+    "supportedLocales": ["en", "ja"],
     "defaultLocale": "ja",
     "authenticationFlows": [
         {
