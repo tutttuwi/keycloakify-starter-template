@@ -135,19 +135,28 @@ export default function ResetCredentials(props: PageProps<Extract<KcContext, { p
                                         placeholder="1990"
                                         value={birthYear}
                                         onChange={e => {
-                                            const value = e.target.value.replace(/[^0-9]/g, "");
-                                            const numValue = parseInt(value);
-                                            if (value.length <= 4 && numValue >= 1900 && numValue <= new Date().getFullYear()) {
-                                                setBirthYear(value);
+                                            const value = e.target.value;
+                                            // 数字のみ許可
+                                            if (/^\d*$/.test(value)) {
+                                                const numValue = parseInt(value);
+                                                // 4桁以内で、1900年から現在の年まで
+                                                if (
+                                                    value.length <= 4 &&
+                                                    (value === "" || (numValue >= 1900 && numValue <= new Date().getFullYear()))
+                                                ) {
+                                                    setBirthYear(value);
+                                                }
                                             }
                                         }}
                                         onKeyDown={e => {
+                                            // 数字、制御キー、矢印キー、タブキーのみ許可
                                             if (
-                                                !/[0-9]/.test(e.key) &&
-                                                !["Backspace", "Delete", "ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown", "Tab"].includes(e.key)
+                                                /[0-9]/.test(e.key) ||
+                                                ["Backspace", "Delete", "ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown", "Tab"].includes(e.key)
                                             ) {
-                                                e.preventDefault();
+                                                return;
                                             }
+                                            e.preventDefault();
                                         }}
                                     />
                                     <div className="text-xs text-gray-500 text-center mt-1">年</div>
@@ -164,19 +173,25 @@ export default function ResetCredentials(props: PageProps<Extract<KcContext, { p
                                         placeholder="01"
                                         value={birthMonth}
                                         onChange={e => {
-                                            const value = e.target.value.replace(/[^0-9]/g, "");
-                                            const numValue = parseInt(value);
-                                            if (value.length <= 2 && numValue >= 1 && numValue <= 12) {
-                                                setBirthMonth(value);
+                                            const value = e.target.value;
+                                            // 数字のみ許可
+                                            if (/^\d*$/.test(value)) {
+                                                const numValue = parseInt(value);
+                                                // 2桁以内で、1-12月まで
+                                                if (value.length <= 2 && (value === "" || (numValue >= 1 && numValue <= 12))) {
+                                                    setBirthMonth(value);
+                                                }
                                             }
                                         }}
                                         onKeyDown={e => {
+                                            // 数字、制御キー、矢印キー、タブキーのみ許可
                                             if (
-                                                !/[0-9]/.test(e.key) &&
-                                                !["Backspace", "Delete", "ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown", "Tab"].includes(e.key)
+                                                /[0-9]/.test(e.key) ||
+                                                ["Backspace", "Delete", "ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown", "Tab"].includes(e.key)
                                             ) {
-                                                e.preventDefault();
+                                                return;
                                             }
+                                            e.preventDefault();
                                         }}
                                     />
                                     <div className="text-xs text-gray-500 text-center mt-1">月</div>
@@ -193,19 +208,25 @@ export default function ResetCredentials(props: PageProps<Extract<KcContext, { p
                                         placeholder="01"
                                         value={birthDay}
                                         onChange={e => {
-                                            const value = e.target.value.replace(/[^0-9]/g, "");
-                                            const numValue = parseInt(value);
-                                            if (value.length <= 2 && numValue >= 1 && numValue <= 31) {
-                                                setBirthDay(value);
+                                            const value = e.target.value;
+                                            // 数字のみ許可
+                                            if (/^\d*$/.test(value)) {
+                                                const numValue = parseInt(value);
+                                                // 2桁以内で、1-31日まで
+                                                if (value.length <= 2 && (value === "" || (numValue >= 1 && numValue <= 31))) {
+                                                    setBirthDay(value);
+                                                }
                                             }
                                         }}
                                         onKeyDown={e => {
+                                            // 数字、制御キー、矢印キー、タブキーのみ許可
                                             if (
-                                                !/[0-9]/.test(e.key) &&
-                                                !["Backspace", "Delete", "ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown", "Tab"].includes(e.key)
+                                                /[0-9]/.test(e.key) ||
+                                                ["Backspace", "Delete", "ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown", "Tab"].includes(e.key)
                                             ) {
-                                                e.preventDefault();
+                                                return;
                                             }
+                                            e.preventDefault();
                                         }}
                                     />
                                     <div className="text-xs text-gray-500 text-center mt-1">日</div>
